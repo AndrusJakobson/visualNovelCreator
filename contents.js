@@ -4,7 +4,6 @@ const story = {
         {
             id: 1,
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque a ipsum nunc. In rutrum ligula sed nibh pellentesque lacinia. Sed nec vulputate metus, at fringilla eros. Phasellus eu leo auctor, mattis ligula nec, fermentum neque. Nulla venenatis varius efficitur. Nam vitae placerat nisi, et efficitur leo. Nam ac lorem eu libero placerat gravida eget in risus. Fusce congue semper ipsum, at egestas felis aliquam vitae.\n' +
-                '\n' +
                 '            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec risus mauris, sodales et sem id, mollis lacinia massa. Donec malesuada ultricies elit, quis suscipit diam posuere eget. Pellentesque varius elit elit, molestie mattis mi malesuada sit amet. In at dictum magna, eu egestas neque. Fusce ultricies mattis ipsum, facilisis aliquet eros viverra vulputate. Donec elit mauris, tincidunt in mi vel, euismod suscipit est. Vivamus et posuere neque.\n' +
                 '\n' +
                 '            Cras rutrum ligula neque, et finibus nulla convallis eget. Praesent sit amet consequat elit, non consectetur augue. Integer dignissim iaculis diam, sed fringilla sem commodo et. Ut porttitor velit lectus, sit amet ullamcorper tellus viverra eu. In vehicula ligula sit amet erat aliquet mollis. Ut accumsan est purus, sed consectetur magna vulputate et. Morbi nec velit id nisl convallis ullamcorper sed ut tortor.\n' +
@@ -41,7 +40,7 @@ const story = {
                 {
                     text: 'järgmine',
                     nextId: 2,
-                    points: 30,
+                    points: 1,
                 },
                 {
                     text: 'eelmine',
@@ -61,8 +60,6 @@ const story = {
                     nextId: 3,
                     text: 'Teleporteeru algusesse tacoman jõuga!',
                     condition: function (points) {
-                        console.log('Actually in here!');
-                        console.log(points);
                         return points >= 30;
                     },
                     failId: 4,
