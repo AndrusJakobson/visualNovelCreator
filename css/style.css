@@ -1,0 +1,43 @@
+body {
+    background-color: #333;
+    color: #FFF;
+}
+
+p {
+    font-size: 1.2rem;
+}
+
+#headline {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.text-container p {
+    white-space: pre-wrap;
+    max-width: 100%;
+}
+
+.text-container p > * {
+    color: #FFF;
+    max-width: 100%;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.button-container .button-wrapper {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.button-container .button-wrapper .choice-button {
+    min-width: 20vw;
+}
+
+.contentImage {
+    display: block;
+    margin: auto auto 10px;
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visual novel</title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="container">
+    <h1 id="headline"></h1>
+    <div class="image-container"></div>
+    <div class="text-container"></div>
+    <div class="button-container"></div>
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="contents.js"></script>
+<script>
+    const imageContainer = $('.image-container');
+    const contentContainer = $('.text-container');
+    const buttonContainer = $('.button-container');
+
+    $(document).ready(function () {
+        $('#headline').html(story.headline);
+        renderContent(getCurrentContent())
+    });
+
+    function renderPageById(id, extraPoints) {
+        changeId(id);
+        addPoints(extraPoints);
+        renderContent(getCurrentContent());
+    }
+
+    function renderContent(content) {
+        imageContainer.empty();
+        contentContainer.empty();
+        buttonContainer.empty();
+
+        if (!content) {
+            content = {
+                content: 'Selle ID\'ga vaade puudub!',
+                buttons: [],
+            }
+        }
+
+        if (content.images) {
+            content.images.forEach((image) => {
+                const imageHtml = '<img class="contentImage" src="images/' + image + '"/>';
+                imageContainer.append(imageHtml)
+            });
+        }
+
+        const htmlContent = '<p>' + content.content + '</p>';
+        contentContainer.append(htmlContent);
+
+        content.buttons.forEach((button) => {
+            buttonContainer.append(getButtonAsHtml(button));
+        });
+    }
+
+    function getButtonAsHtml(button) {
+        const addablePoints = 'points' in button ? button['points'] : 0;
+        let nextId = button.nextId;
+
+        if ('condition' in button && 'failId' in button && !button['condition'](points)) {
+            nextId = button.failId;
+        }
+
+        return '<div class="button-wrapper">' +
+            '<button onclick="renderPageById(' + nextId + ', ' + addablePoints + ')" class="choice-button btn btn-secondary">' + button.text + '</button>' +
+            '</div>';
+    }
+</script>
+</body>
+</html>
